@@ -105,9 +105,11 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
 
 [data-testid="stChatInput"] textarea::placeholder { color: rgba(0,212,255,0.4) !important; }
 
-[data-testid="stChatInput"] {
-    z-index: 1000 !important;
-    padding-bottom: 20px !important;
+[data-testid="stChatInput"], .stChatInput {
+    z-index: 9999 !important;
+    padding-bottom: 2rem !important;
+    visibility: visible !important;
+    display: flex !important;
 }
 
 [data-testid="stChatInput"] button {
@@ -213,7 +215,7 @@ button:focus, textarea:focus, input:focus {
 
 @media (max-width: 600px) {
     [data-testid="block-container"] {
-        padding: 0.5rem 0.6rem 8rem 0.6rem !important;
+        padding: 0.5rem 0.6rem 10rem 0.6rem !important;
     }
 
     h1 {
