@@ -29,7 +29,7 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
 
 [data-testid="stMain"] {
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 /* Animated hex grid background */
