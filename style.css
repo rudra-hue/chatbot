@@ -45,18 +45,20 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
     z-index: 0;
 }
 
-/* Scanning line animation */
-[data-testid="stAppViewContainer"]::after {
-    content: '';
-    position: fixed;
-    top: -100%;
-    left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #00d4ff, transparent);
-    animation: scan 6s linear infinite;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.4;
+/* Scanning line animation - Hidden on mobile to prevent layout issues */
+@media (min-width: 601px) {
+    [data-testid="stAppViewContainer"]::after {
+        content: '';
+        position: fixed;
+        top: -100%;
+        left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+        animation: scan 6s linear infinite;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.4;
+    }
 }
 
 @keyframes scan {
@@ -102,6 +104,11 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
 }
 
 [data-testid="stChatInput"] textarea::placeholder { color: rgba(0,212,255,0.4) !important; }
+
+[data-testid="stChatInput"] {
+    z-index: 1000 !important;
+    padding-bottom: 20px !important;
+}
 
 [data-testid="stChatInput"] button {
     background: linear-gradient(135deg, #003d6b, #005fa3) !important;
@@ -206,7 +213,7 @@ button:focus, textarea:focus, input:focus {
 
 @media (max-width: 600px) {
     [data-testid="block-container"] {
-        padding: 0.5rem 0.6rem 2rem 0.6rem !important;
+        padding: 0.5rem 0.6rem 8rem 0.6rem !important;
     }
 
     h1 {
@@ -216,8 +223,10 @@ button:focus, textarea:focus, input:focus {
 
     [data-testid="stChatMessage"] {
         padding: 0.6rem 0.8rem !important;
-        font-size: 0.95rem !important;
-        width: 95% !important;
+        font-size: 0.9rem !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 
     [data-testid="stSidebar"] {
