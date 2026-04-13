@@ -49,7 +49,6 @@ body,
         repeating-linear-gradient(0deg, rgba(0, 212, 255, 0.03) 0px, transparent 30px);
     pointer-events: none;
     z-index: -2;
-    /* IMPORTANT FIX */
 }
 
 [data-testid="stAppViewContainer"]::after {
@@ -63,7 +62,6 @@ body,
     animation: scan 6s linear infinite;
     pointer-events: none;
     z-index: -1;
-    /* IMPORTANT FIX */
     opacity: 0.4;
 }
 
@@ -93,16 +91,14 @@ body,
     }
 }
 
-/* FIXED: Layout padding */
+/* Layout padding */
 [data-testid="block-container"] {
     padding: 1rem 1rem 4rem 1rem !important;
     max-width: 1040px !important;
 }
 
-/* 🔥 CRITICAL: Chat input fixed at bottom */
+/* Let Streamlit handle the positioning natively */
 [data-testid="stChatInput"] {
-    position: sticky;
-    bottom: 0;
     background: rgba(0, 18, 40, 0.95);
     padding: 0.5rem 0;
     z-index: 999;
@@ -150,9 +146,8 @@ body,
 
 /* 🔥 MOBILE FIXES */
 @media (max-width: 768px) {
-
     [data-testid="block-container"] {
-        padding: 0.5rem 0.8rem 5rem 0.8rem !important;
+        padding: 0.5rem 0.8rem 2rem 0.8rem !important;
     }
 
     textarea {
