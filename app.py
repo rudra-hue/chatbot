@@ -12,7 +12,7 @@ from knowledge import GP_BHUJ_SYSTEM_PROMPT
 load_dotenv()
 
 
-st.set_page_config(page_title="GP Bhuj AI Assistant", page_icon="🏛️", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="GP Bhuj AI Assistant", page_icon="🏛️", layout="wide", initial_sidebar_state="collapsed")
 
 
 @st.cache_resource

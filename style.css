@@ -29,7 +29,7 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
 
 [data-testid="stMain"] {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 /* Animated hex grid background */
@@ -45,20 +45,18 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
     z-index: 0;
 }
 
-/* Scanning line animation - Hidden on mobile to prevent layout issues */
-@media (min-width: 601px) {
-    [data-testid="stAppViewContainer"]::after {
-        content: '';
-        position: fixed;
-        top: -100%;
-        left: 0; right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #00d4ff, transparent);
-        animation: scan 6s linear infinite;
-        pointer-events: none;
-        z-index: 1;
-        opacity: 0.4;
-    }
+/* Scanning line animation */
+[data-testid="stAppViewContainer"]::after {
+    content: '';
+    position: fixed;
+    top: -100%;
+    left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+    animation: scan 6s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
 }
 
 @keyframes scan {
@@ -82,8 +80,10 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
 
 [data-testid="stSidebar"] * { font-family: 'Rajdhani', sans-serif !important; }
 
-/* Hide default header/footer */
-#MainMenu, footer, header { visibility: hidden; }
+/* Hide default header/footer on larger screens only so mobile keeps the sidebar toggle */
+@media (min-width: 901px) {
+    #MainMenu, footer, header { visibility: hidden; }
+}
 
 /* Layout */
 [data-testid="block-container"] {
@@ -104,10 +104,6 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
 }
 
 [data-testid="stChatInput"] textarea::placeholder { color: rgba(0,212,255,0.4) !important; }
-
-[data-testid="stChatInput"], .stChatInput {
-    z-index: 9999 !important;
-}
 
 [data-testid="stChatInput"] button {
     background: linear-gradient(135deg, #003d6b, #005fa3) !important;
@@ -158,42 +154,10 @@ hr { border-color: rgba(0,212,255,0.2) !important; }
 ::-webkit-scrollbar-track { background: #000510; }
 ::-webkit-scrollbar-thumb { background: linear-gradient(#00d4ff, #005fa3); border-radius: 3px; }
 
-/* Chat avatars and messages */
+/* Chat avatars */
 [data-testid="stChatMessage"] {
-    background: rgba(0, 15, 35, 0.6) !important;
-    border: 1px solid rgba(0, 212, 255, 0.1) !important;
-    border-radius: 15px !important;
-    margin-bottom: 1rem !important;
-    padding: 1rem !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
-}
-
-[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) {
-    background: linear-gradient(135deg, rgba(0, 40, 80, 0.5), rgba(0, 20, 40, 0.7)) !important;
-    border: 1px solid rgba(0, 212, 255, 0.2) !important;
-}
-
-[data-testid="chatAvatarIcon-user"], [data-testid="chatAvatarIcon-assistant"] {
-    background: var(--cyan-1) !important;
-    color: var(--bg-0) !important;
-}
-
-/* Header styling */
-h1 {
-    font-family: 'Orbitron', sans-serif !important;
-    background: linear-gradient(135deg, #00d4ff 0%, #ffffff 50%, #00d4ff 100%);
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    letter-spacing: 2px !important;
-    text-align: center !important;
-    margin-bottom: 0.5rem !important;
-}
-
-.stCaption {
-    text-align: center !important;
-    color: var(--ink-2) !important;
-    letter-spacing: 1px !important;
+    background: transparent !important;
+    border: none !important;
 }
 
 /* Reduce layout jitter and sidebar overflow */
@@ -210,22 +174,9 @@ button:focus, textarea:focus, input:focus {
     outline-offset: 2px !important;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     [data-testid="block-container"] {
-        padding: 0.5rem 0.6rem 6rem 0.6rem !important;
-    }
-
-    h1 {
-        font-size: 1.6rem !important;
-        letter-spacing: 1px !important;
-    }
-
-    [data-testid="stChatMessage"] {
-        padding: 0.6rem 0.8rem !important;
-        font-size: 0.9rem !important;
-        width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+        padding: 0.75rem 1.1rem 2rem 1.1rem !important;
     }
 
     [data-testid="stSidebar"] {
